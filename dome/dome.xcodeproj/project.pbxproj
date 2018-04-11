@@ -15,6 +15,7 @@
 		1A5430C6207DF75100A06513 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430C5207DF75100A06513 /* main.m */; };
 		1A5430D0207DF75100A06513 /* domeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430CF207DF75100A06513 /* domeTests.m */; };
 		1A5430DB207DF75100A06513 /* domeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430DA207DF75100A06513 /* domeUITests.m */; };
+		1A7980E1207DF9C40091C777 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A7980E0207DF9C40091C777 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		1A5430D6207DF75100A06513 /* domeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = domeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A5430DA207DF75100A06513 /* domeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = domeUITests.m; sourceTree = "<group>"; };
 		1A5430DC207DF75100A06513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A7980E0207DF9C40091C777 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		1A5430AA207DF74F00A06513 = {
 			isa = PBXGroup;
 			children = (
+				1A7980E0207DF9C40091C777 /* Default-568h@2x.png */,
 				1A5430B5207DF74F00A06513 /* dome */,
 				1A5430CE207DF75100A06513 /* domeTests */,
 				1A5430D9207DF75100A06513 /* domeUITests */,
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A5430C3207DF75100A06513 /* LaunchScreen.storyboard in Resources */,
+				1A7980E1207DF9C40091C777 /* Default-568h@2x.png in Resources */,
 				1A5430C0207DF75100A06513 /* Assets.xcassets in Resources */,
 				1A5430BE207DF75000A06513 /* Main.storyboard in Resources */,
 			);
@@ -436,13 +440,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				INFOPLIST_FILE = dome/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.dome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -453,13 +458,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				INFOPLIST_FILE = dome/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.dome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
