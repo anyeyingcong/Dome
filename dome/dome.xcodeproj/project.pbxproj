@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A4DE9A0207E060E007D3BF3 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4DE99F207E060E007D3BF3 /* NewViewController.m */; };
+		1A4DE9A3207E0832007D3BF3 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4DE9A2207E0832007D3BF3 /* BG.png */; };
 		1A5430B8207DF75000A06513 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430B7207DF75000A06513 /* AppDelegate.m */; };
 		1A5430BB207DF75000A06513 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430BA207DF75000A06513 /* ViewController.m */; };
 		1A5430BE207DF75000A06513 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A5430BC207DF75000A06513 /* Main.storyboard */; };
@@ -36,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A4DE99E207E060E007D3BF3 /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
+		1A4DE99F207E060E007D3BF3 /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
+		1A4DE9A1207E06A5007D3BF3 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		1A4DE9A2207E0832007D3BF3 /* BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BG.png; sourceTree = "<group>"; };
 		1A5430B3207DF74F00A06513 /* dome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A5430B6207DF75000A06513 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1A5430B7207DF75000A06513 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -83,6 +89,8 @@
 		1A5430AA207DF74F00A06513 = {
 			isa = PBXGroup;
 			children = (
+				1A4DE9A2207E0832007D3BF3 /* BG.png */,
+				1A4DE9A1207E06A5007D3BF3 /* PrefixHeader.pch */,
 				1A7980E0207DF9C40091C777 /* Default-568h@2x.png */,
 				1A5430B5207DF74F00A06513 /* dome */,
 				1A5430CE207DF75100A06513 /* domeTests */,
@@ -108,6 +116,8 @@
 				1A5430B7207DF75000A06513 /* AppDelegate.m */,
 				1A5430B9207DF75000A06513 /* ViewController.h */,
 				1A5430BA207DF75000A06513 /* ViewController.m */,
+				1A4DE99E207E060E007D3BF3 /* NewViewController.h */,
+				1A4DE99F207E060E007D3BF3 /* NewViewController.m */,
 				1A5430BC207DF75000A06513 /* Main.storyboard */,
 				1A5430BF207DF75100A06513 /* Assets.xcassets */,
 				1A5430C1207DF75100A06513 /* LaunchScreen.storyboard */,
@@ -238,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A4DE9A3207E0832007D3BF3 /* BG.png in Resources */,
 				1A5430C3207DF75100A06513 /* LaunchScreen.storyboard in Resources */,
 				1A7980E1207DF9C40091C777 /* Default-568h@2x.png in Resources */,
 				1A5430C0207DF75100A06513 /* Assets.xcassets in Resources */,
@@ -269,6 +280,7 @@
 				1A5430BB207DF75000A06513 /* ViewController.m in Sources */,
 				1A5430C6207DF75100A06513 /* main.m in Sources */,
 				1A5430B8207DF75000A06513 /* AppDelegate.m in Sources */,
+				1A4DE9A0207E060E007D3BF3 /* NewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +451,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = dome/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -457,6 +471,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = dome/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (

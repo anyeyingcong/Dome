@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "NewViewController.h"
 @interface ViewController ()
 
 @end
@@ -17,7 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.view.backgroundColor = [UIColor purpleColor];
+    self.view.backgroundColor = [UIColor orangeColor];
+    
+    
+    NewViewController *vc = [[NewViewController alloc]init];
+    vc.view.center = self.view.center;
+    vc.view.bounds = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/2);
+    
+    [self addChildViewController:vc];
+    [self.view addSubview:vc.view];
 }
 
 
