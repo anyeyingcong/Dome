@@ -18,6 +18,7 @@
 		1A5430D0207DF75100A06513 /* domeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430CF207DF75100A06513 /* domeTests.m */; };
 		1A5430DB207DF75100A06513 /* domeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430DA207DF75100A06513 /* domeUITests.m */; };
 		1A7980E1207DF9C40091C777 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A7980E0207DF9C40091C777 /* Default-568h@2x.png */; };
+		FA4E567E7B425118BDBD4B1E /* Pods_dome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84D47E631A992AA8E82A1BF /* Pods_dome.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,9 @@
 		1A5430DA207DF75100A06513 /* domeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = domeUITests.m; sourceTree = "<group>"; };
 		1A5430DC207DF75100A06513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A7980E0207DF9C40091C777 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3A04A89B45C311E8FBC9C86E /* Pods-dome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dome/Pods-dome.debug.xcconfig"; sourceTree = "<group>"; };
+		CEDB6EAA57233511A289AA13 /* Pods-dome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dome.release.xcconfig"; path = "Pods/Target Support Files/Pods-dome/Pods-dome.release.xcconfig"; sourceTree = "<group>"; };
+		D84D47E631A992AA8E82A1BF /* Pods_dome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4E567E7B425118BDBD4B1E /* Pods_dome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +101,8 @@
 				1A5430CE207DF75100A06513 /* domeTests */,
 				1A5430D9207DF75100A06513 /* domeUITests */,
 				1A5430B4207DF74F00A06513 /* Products */,
+				9BDBD13C8BDA6A661E693EB8 /* Pods */,
+				3681748543DAFDB9B8613D78 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +152,23 @@
 			path = domeUITests;
 			sourceTree = "<group>";
 		};
+		3681748543DAFDB9B8613D78 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D84D47E631A992AA8E82A1BF /* Pods_dome.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9BDBD13C8BDA6A661E693EB8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A04A89B45C311E8FBC9C86E /* Pods-dome.debug.xcconfig */,
+				CEDB6EAA57233511A289AA13 /* Pods-dome.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A5430DF207DF75100A06513 /* Build configuration list for PBXNativeTarget "dome" */;
 			buildPhases = (
+				3F118576D672C2F68882C3E9 /* [CP] Check Pods Manifest.lock */,
 				1A5430AF207DF74F00A06513 /* Sources */,
 				1A5430B0207DF74F00A06513 /* Frameworks */,
 				1A5430B1207DF74F00A06513 /* Resources */,
+				D797711C2FA37FA483FBA211 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -271,6 +297,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3F118576D672C2F68882C3E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-dome-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D797711C2FA37FA483FBA211 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-dome/Pods-dome-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-dome/Pods-dome-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1A5430AF207DF74F00A06513 /* Sources */ = {
@@ -447,6 +512,7 @@
 		};
 		1A5430E0207DF75100A06513 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A04A89B45C311E8FBC9C86E /* Pods-dome.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -455,10 +521,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = dome/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.dome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -467,6 +530,7 @@
 		};
 		1A5430E1207DF75100A06513 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEDB6EAA57233511A289AA13 /* Pods-dome.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -475,10 +539,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = dome/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.dome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -492,11 +553,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				INFOPLIST_FILE = domeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.domeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -511,11 +568,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				INFOPLIST_FILE = domeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.domeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -529,11 +582,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				INFOPLIST_FILE = domeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.domeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -547,11 +596,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				INFOPLIST_FILE = domeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.domeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
