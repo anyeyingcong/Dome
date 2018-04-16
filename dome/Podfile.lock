@@ -14,17 +14,148 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+  - JWNetAutoCache (0.0.2)
+  - MBProgressHUD (0.9.2)
+  - MJRefresh (3.1.15.3)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+  - UMengUShare/Core (6.4.8.2):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.4.8.2)
+  - UMengUShare/Plugin/IDFA (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/AlipayShare (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/DingDing (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Douban (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/DropBox (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Email (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/EverNote (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Facebook (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Flickr (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/GooglePlus (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Instagram (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Kakao (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/LaiWang (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Line (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Linkedin (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Pinterest (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Pocket (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/QQ (6.4.8.2):
+    - UMengUShare/Core
+    - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedQQ (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedSina (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedWeChat (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Renren (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Sina (6.4.8.2):
+    - UMengUShare/Core
+    - UMengUShare/Social/ReducedSina
+  - UMengUShare/Social/SMS (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/TencentWeibo (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Tumblr (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Twitter (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/VKontakte (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/WeChat (6.4.8.2):
+    - UMengUShare/Core
+    - UMengUShare/Social/ReducedWeChat
+  - UMengUShare/Social/WhatsApp (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/YiXin (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/YouDao (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/UI (6.4.8.2):
+    - UMengUShare/Core
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - FMDB (~> 2.7.2)
+  - JWNetAutoCache (~> 0.0.2)
+  - MBProgressHUD (~> 0.8)
+  - MJRefresh (~> 3.1.15.3)
+  - SDWebImage (~> 3.7.2)
+  - UMengUShare/Plugin/IDFA
+  - UMengUShare/Social/AlipayShare
+  - UMengUShare/Social/DingDing
+  - UMengUShare/Social/Douban
+  - UMengUShare/Social/DropBox
+  - UMengUShare/Social/Email
+  - UMengUShare/Social/EverNote
+  - UMengUShare/Social/Facebook
+  - UMengUShare/Social/Flickr
+  - UMengUShare/Social/GooglePlus
+  - UMengUShare/Social/Instagram
+  - UMengUShare/Social/Kakao
+  - UMengUShare/Social/LaiWang
+  - UMengUShare/Social/Line
+  - UMengUShare/Social/Linkedin
+  - UMengUShare/Social/Pinterest
+  - UMengUShare/Social/Pocket
+  - UMengUShare/Social/QQ
+  - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedSina
+  - UMengUShare/Social/ReducedWeChat
+  - UMengUShare/Social/Renren
+  - UMengUShare/Social/Sina
+  - UMengUShare/Social/SMS
+  - UMengUShare/Social/TencentWeibo
+  - UMengUShare/Social/Tumblr
+  - UMengUShare/Social/Twitter
+  - UMengUShare/Social/VKontakte
+  - UMengUShare/Social/WeChat
+  - UMengUShare/Social/WhatsApp
+  - UMengUShare/Social/YiXin
+  - UMengUShare/Social/YouDao
+  - UMengUShare/UI
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - FMDB
+    - JWNetAutoCache
+    - MBProgressHUD
+    - MJRefresh
+    - SDWebImage
+    - UMengUShare
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  JWNetAutoCache: 434f10855da06d29a381359552ae9d27ef35cad7
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
 
-PODFILE CHECKSUM: f02baa788b9901446e6acb142dd8c0eaa65ee7a6
+PODFILE CHECKSUM: bbda8910fa38765986127a53516acfcdbea5e426
 
 COCOAPODS: 1.5.0
