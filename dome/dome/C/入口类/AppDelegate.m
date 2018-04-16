@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import "GuidePageViewController.h"
+#import "TBViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -17,9 +18,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [self isTtTheFirstRun];////判断APP是否第一次登录
+    
     return YES;
 }
 
+-(void)isTtTheFirstRun{//判断APP是否第一次登录
+    
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"]){
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstStart"];
+        
+        GuidePageViewController *vc = [[GuidePageViewController alloc]init];
+        vc.imgSNameArr = @[@"navigation_page_picture_1",@"navigation_page_picture_2",@"navigation_page_picture_3"];
+        self.window.rootViewController = vc;
+        
+        
+        NSLog(@"第一次启动跳转至引导页,引导完成后，跳转到主界面，进行核心业务时判断是否已经登录，如果已经登录可以进行后面的业务如果没有登录就跳转至登录界面");
+    }else{
+        TBViewController *vc = [[TBViewController alloc]init];
+        self.window.rootViewController = vc;
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

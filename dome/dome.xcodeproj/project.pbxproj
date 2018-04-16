@@ -18,6 +18,13 @@
 		1A5430D0207DF75100A06513 /* domeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430CF207DF75100A06513 /* domeTests.m */; };
 		1A5430DB207DF75100A06513 /* domeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430DA207DF75100A06513 /* domeUITests.m */; };
 		1A7980E1207DF9C40091C777 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A7980E0207DF9C40091C777 /* Default-568h@2x.png */; };
+		1AD3F1F520844B600095DBD1 /* GuidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F1F420844B600095DBD1 /* GuidePageViewController.m */; };
+		1AD3F1FA20844BBE0095DBD1 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F1F820844BBD0095DBD1 /* RegisterViewController.m */; };
+		1AD3F1FD20844BCD0095DBD1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F1FC20844BCD0095DBD1 /* LoginViewController.m */; };
+		1AD3F20120844BD90095DBD1 /* TBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F1FF20844BD90095DBD1 /* TBViewController.m */; };
+		1AD3F20520844BE30095DBD1 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F20320844BE30095DBD1 /* CenterViewController.m */; };
+		1AD3F20920844BE70095DBD1 /* TeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F20720844BE70095DBD1 /* TeamViewController.m */; };
+		1AD3F20D20844BEC0095DBD1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F20B20844BEC0095DBD1 /* MainViewController.m */; };
 		FA4E567E7B425118BDBD4B1E /* Pods_dome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84D47E631A992AA8E82A1BF /* Pods_dome.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +67,20 @@
 		1A5430DA207DF75100A06513 /* domeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = domeUITests.m; sourceTree = "<group>"; };
 		1A5430DC207DF75100A06513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A7980E0207DF9C40091C777 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1AD3F1F320844B600095DBD1 /* GuidePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidePageViewController.h; sourceTree = "<group>"; };
+		1AD3F1F420844B600095DBD1 /* GuidePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidePageViewController.m; sourceTree = "<group>"; };
+		1AD3F1F820844BBD0095DBD1 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		1AD3F1F920844BBE0095DBD1 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		1AD3F1FB20844BCD0095DBD1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		1AD3F1FC20844BCD0095DBD1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		1AD3F1FF20844BD90095DBD1 /* TBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBViewController.m; sourceTree = "<group>"; };
+		1AD3F20020844BD90095DBD1 /* TBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBViewController.h; sourceTree = "<group>"; };
+		1AD3F20320844BE30095DBD1 /* CenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterViewController.m; sourceTree = "<group>"; };
+		1AD3F20420844BE30095DBD1 /* CenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterViewController.h; sourceTree = "<group>"; };
+		1AD3F20720844BE70095DBD1 /* TeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamViewController.m; sourceTree = "<group>"; };
+		1AD3F20820844BE70095DBD1 /* TeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamViewController.h; sourceTree = "<group>"; };
+		1AD3F20B20844BEC0095DBD1 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		1AD3F20C20844BEC0095DBD1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3A04A89B45C311E8FBC9C86E /* Pods-dome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dome/Pods-dome.debug.xcconfig"; sourceTree = "<group>"; };
 		CEDB6EAA57233511A289AA13 /* Pods-dome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dome.release.xcconfig"; path = "Pods/Target Support Files/Pods-dome/Pods-dome.release.xcconfig"; sourceTree = "<group>"; };
 		D84D47E631A992AA8E82A1BF /* Pods_dome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,8 +140,9 @@
 		1A5430B5207DF74F00A06513 /* dome */ = {
 			isa = PBXGroup;
 			children = (
-				1A5430B6207DF75000A06513 /* AppDelegate.h */,
-				1A5430B7207DF75000A06513 /* AppDelegate.m */,
+				1AD3F1EF20844B080095DBD1 /* M */,
+				1AD3F1EE20844B040095DBD1 /* V */,
+				1AD3F1ED20844B010095DBD1 /* C */,
 				1A5430B9207DF75000A06513 /* ViewController.h */,
 				1A5430BA207DF75000A06513 /* ViewController.m */,
 				1A4DE99E207E060E007D3BF3 /* NewViewController.h */,
@@ -150,6 +172,115 @@
 				1A5430DC207DF75100A06513 /* Info.plist */,
 			);
 			path = domeUITests;
+			sourceTree = "<group>";
+		};
+		1AD3F1ED20844B010095DBD1 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				1AD3F1F220844B390095DBD1 /* 入口类 */,
+				1AD3F1F120844B360095DBD1 /* 引导页 */,
+				1AD3F1F020844B320095DBD1 /* 登录注册 */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		1AD3F1EE20844B040095DBD1 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		1AD3F1EF20844B080095DBD1 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		1AD3F1F020844B320095DBD1 /* 登录注册 */ = {
+			isa = PBXGroup;
+			children = (
+				1AD3F1F720844BA90095DBD1 /* 注册 */,
+				1AD3F1F620844BA30095DBD1 /* 登录 */,
+			);
+			path = "登录注册";
+			sourceTree = "<group>";
+		};
+		1AD3F1F120844B360095DBD1 /* 引导页 */ = {
+			isa = PBXGroup;
+			children = (
+				1AD3F1F320844B600095DBD1 /* GuidePageViewController.h */,
+				1AD3F1F420844B600095DBD1 /* GuidePageViewController.m */,
+			);
+			path = "引导页";
+			sourceTree = "<group>";
+		};
+		1AD3F1F220844B390095DBD1 /* 入口类 */ = {
+			isa = PBXGroup;
+			children = (
+				1A5430B6207DF75000A06513 /* AppDelegate.h */,
+				1A5430B7207DF75000A06513 /* AppDelegate.m */,
+			);
+			path = "入口类";
+			sourceTree = "<group>";
+		};
+		1AD3F1F620844BA30095DBD1 /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				1AD3F1FB20844BCD0095DBD1 /* LoginViewController.h */,
+				1AD3F1FC20844BCD0095DBD1 /* LoginViewController.m */,
+				1AD3F20A20844BEC0095DBD1 /* 主页 */,
+				1AD3F20620844BE70095DBD1 /* 扩展团队 */,
+				1AD3F20220844BE30095DBD1 /* 个人中心 */,
+				1AD3F1FE20844BD90095DBD1 /* Tabbar */,
+			);
+			path = "登录";
+			sourceTree = "<group>";
+		};
+		1AD3F1F720844BA90095DBD1 /* 注册 */ = {
+			isa = PBXGroup;
+			children = (
+				1AD3F1F920844BBE0095DBD1 /* RegisterViewController.h */,
+				1AD3F1F820844BBD0095DBD1 /* RegisterViewController.m */,
+			);
+			path = "注册";
+			sourceTree = "<group>";
+		};
+		1AD3F1FE20844BD90095DBD1 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				1AD3F1FF20844BD90095DBD1 /* TBViewController.m */,
+				1AD3F20020844BD90095DBD1 /* TBViewController.h */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		1AD3F20220844BE30095DBD1 /* 个人中心 */ = {
+			isa = PBXGroup;
+			children = (
+				1AD3F20320844BE30095DBD1 /* CenterViewController.m */,
+				1AD3F20420844BE30095DBD1 /* CenterViewController.h */,
+			);
+			path = "个人中心";
+			sourceTree = "<group>";
+		};
+		1AD3F20620844BE70095DBD1 /* 扩展团队 */ = {
+			isa = PBXGroup;
+			children = (
+				1AD3F20720844BE70095DBD1 /* TeamViewController.m */,
+				1AD3F20820844BE70095DBD1 /* TeamViewController.h */,
+			);
+			path = "扩展团队";
+			sourceTree = "<group>";
+		};
+		1AD3F20A20844BEC0095DBD1 /* 主页 */ = {
+			isa = PBXGroup;
+			children = (
+				1AD3F20B20844BEC0095DBD1 /* MainViewController.m */,
+				1AD3F20C20844BEC0095DBD1 /* MainViewController.h */,
+			);
+			path = "主页";
 			sourceTree = "<group>";
 		};
 		3681748543DAFDB9B8613D78 /* Frameworks */ = {
@@ -342,8 +473,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AD3F20D20844BEC0095DBD1 /* MainViewController.m in Sources */,
 				1A5430BB207DF75000A06513 /* ViewController.m in Sources */,
+				1AD3F1FA20844BBE0095DBD1 /* RegisterViewController.m in Sources */,
+				1AD3F20120844BD90095DBD1 /* TBViewController.m in Sources */,
 				1A5430C6207DF75100A06513 /* main.m in Sources */,
+				1AD3F1F520844B600095DBD1 /* GuidePageViewController.m in Sources */,
+				1AD3F20920844BE70095DBD1 /* TeamViewController.m in Sources */,
+				1AD3F20520844BE30095DBD1 /* CenterViewController.m in Sources */,
+				1AD3F1FD20844BCD0095DBD1 /* LoginViewController.m in Sources */,
 				1A5430B8207DF75000A06513 /* AppDelegate.m in Sources */,
 				1A4DE9A0207E060E007D3BF3 /* NewViewController.m in Sources */,
 			);
@@ -515,13 +653,17 @@
 			baseConfigurationReference = 3A04A89B45C311E8FBC9C86E /* Pods-dome.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = dome/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.dome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -533,13 +675,17 @@
 			baseConfigurationReference = CEDB6EAA57233511A289AA13 /* Pods-dome.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = dome/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.dome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -553,7 +699,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				INFOPLIST_FILE = domeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.domeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -568,7 +718,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				INFOPLIST_FILE = domeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.domeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -582,7 +736,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				INFOPLIST_FILE = domeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.domeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -596,7 +754,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				INFOPLIST_FILE = domeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.domeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
