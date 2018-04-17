@@ -7,8 +7,8 @@
 //
 
 #import "MainViewController.h"
-#import "LXScrollContentView.h"
 #import "TableViewViewController.h"
+#import "LXScrollContentView.h"
 #import "LXSegmentTitleView.h"
 //#import "TableViewViewController.h"
 @interface MainViewController ()<LXSegmentTitleViewDelegate,LXScrollContentViewDelegate>
@@ -36,18 +36,17 @@
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     self.edgesForExtendedLayout = UIRectEdgeNone;//从nav底部开始
     
-    [self getHubUI];
-
-    //创建一个并行队列
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self getRequestData];
-    });
-
-    
 }
 - (void)viewDidLoad {
-
-
+    
+    [self getHubUI];
+    
+    //创建一个并行队列
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        [self getRequestData];
+    });
+   
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -55,8 +54,8 @@
     
     [self creatTitleView];//分类栏
     
-    [self creatTableViewControllers];//创建每个分类的TableViewController
     
+    [self creatTableViewControllers];//创建每个分类的TableViewController
 }
 -(void)setNVC{
     self.title = @"主页";
@@ -98,7 +97,7 @@
 -(void)getRequestData{
     
     [NetworkObject postNetworkRequestWithUrlString:[NSString stringWithFormat:@"%@index/index",IP] parameters:@{@"carId":@"0",@"page":@"0",@"token":[NetworkObject md5:@"bangbang"]} isCache:YES isUpdate:NO tableName:@"main" succeed:^(id data) {
-        
+        NSLog(@" ===\n %@",data);
         self.car_infonameMarr = [NSMutableArray new];
         self.carIdMarr = [NSMutableArray new];
         NSMutableArray *carlistMarr = [NSMutableArray new];

@@ -19,6 +19,8 @@
 
 @property (nonatomic) NSMutableArray *butMarr;
 
+@property (nonatomic) id data;
+
 
 @end
 
@@ -30,18 +32,32 @@ static int pageNumber = 0;
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-//    NSLog(@" ===\n %@",self.carId);
+//    NSLog(@" ===\n %@",[NSString stringWithFormat:@"tabView%@",self.carId]);
 
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        if ([SQLObject SQLTableName:[NSString stringWithFormat:@"tabView%@",self.carId]] != nil) {//如果缓存是空值，去服务器请求数据并且存到SQL
+            id dict = [NSJSONSerialization JSONObjectWithData:[SQLObject SQLTableName:[NSString stringWithFormat:@"tabView%@",self.carId]] options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+            self.data = dict;
+            [self dowmData];
+        }else{
+            // 主线程执行：
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // 马上进入刷新状态
+                [self.tableView.mj_header beginRefreshing];
+            });
+        }
+
+    });
+    
 }
 - (void)viewDidLoad {
     
-    
+//        NSLog(@" ===\n %@",[NSString stringWithFormat:@"tabView%@",self.carId]);
+
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    [self.view setBackgroundColor:[UIColor redColor]];
     
     [self creatTableView];
-    
     [self upOrDownTabView];//上拉加载下拉刷新
 
     
@@ -53,9 +69,6 @@ static int pageNumber = 0;
     //或
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(setDownRefresh)];
-    // 马上进入刷新状态
-    [self.tableView.mj_header beginRefreshing];
-    //
     
     
     //上拉加载
@@ -96,108 +109,137 @@ static int pageNumber = 0;
     
     NSLog(@" ===\n %@",[NSString stringWithFormat:@"%d",pageNumber]);
     
-    [NetworkObject postNetworkRequestWithUrlString:[NSString stringWithFormat:@"%@index/index",IP] parameters:@{@"carId":self.carId,@"page":[NSString stringWithFormat:@"%d",pageNumber],@"token":[NetworkObject md5:@"bangbang"]} isCache:NO isUpdate:NO tableName:[NSString stringWithFormat:@"tabView%@",self.carId] succeed:^(id data) {
+    BOOL yesOrNo = false;
+    if ([self.upOrDown isEqualToString:@"down"]) {
+        yesOrNo = YES;
+    }
+    if ([self.upOrDown isEqualToString:@"up"]) {
+        yesOrNo = NO;
+    }
+    
+    [NetworkObject postNetworkRequestWithUrlString:[NSString stringWithFormat:@"%@index/index",IP] parameters:@{@"carId":self.carId,@"page":[NSString stringWithFormat:@"%d",pageNumber],@"token":[NetworkObject md5:@"bangbang"]} isCache:yesOrNo isUpdate:YES tableName:[NSString stringWithFormat:@"tabView%@",self.carId] succeed:^(id data) {
+        
+        self.data = data;
+        
         if ([self.upOrDown isEqualToString:@"down"]) {//下拉刷新
             
-            [self.mArrNewlist removeAllObjects];
-            self.mArrNewlist = [NSMutableArray new];
+            [self dowmData];
             
-            
-            NSMutableArray *newlistMarr = [NSMutableArray new];
-            newlistMarr = [data valueForKey:@"newlist"];
-            
-            for (int i = 0; i<newlistMarr.count; i++) {
-                
-                TableViewObject *obj = [[TableViewObject alloc]init];
-                obj.tid = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"tid"]];
-                obj.title = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"title"]];
-                obj.comart = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"comart"]];
-                obj.visit = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"visit"]];
-                obj.forword = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"forword"]];
-                obj.image = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"image"]];
-                
-                
-                obj.describe = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"describe"]];
-                obj.isopen = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"isopen"]];
-                
-                
-                [self.mArrNewlist addObject:obj];
-                
-                
-            }
-            
-            
-            // 主线程执行：
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (self.mArrNewlist.count > 0) {
-                    //给tableView设置背景view
-                    UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
-                    [backImageView setImage:[UIImage imageNamed:@"0"]];
-                    self.tableView.backgroundView = backImageView;
-                }else{
-                    //给tableView设置背景view
-                    UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
-                    [backImageView setImage:[UIImage imageNamed:@"bgNO"]];
-                    self.tableView.backgroundView = backImageView;
-                }
-                //2.刷新表格
-                [self.tableView reloadData];
-                
-                // 3. 结束刷新
-                [self.tableView.mj_header endRefreshing];
-            });
 
         }else{//上拉加载
             
-            NSMutableArray *newlistMarr = [NSMutableArray new];
-            newlistMarr = [data valueForKey:@"newlist"];
-            
-            
-            if ([[data valueForKey:@"sum"] intValue] > [[NSString stringWithFormat:@"%lu",(unsigned long)self.mArrNewlist.count] intValue]) {
-                
-                for (int i = 0; i<newlistMarr.count; i++) {
-                    
-                    TableViewObject *obj = [[TableViewObject alloc]init];
-
-                    obj.tid = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"tid"]];
-                    obj.title = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"title"]];
-                    obj.comart = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"comart"]];
-                    obj.visit = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"visit"]];
-                    obj.forword = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"forword"]];
-                    obj.image = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"image"]];
-                    obj.describe = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"describe"]];
-                    obj.isopen = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"isopen"]];
-                    
-                    [self.mArrNewlist addObject:obj];
-                    
-                }
-            }else{
-                pageNumber -= 1;
-            }
-            NSLog(@" ===/n %@",self.mArrNewlist);
-
-            // 主线程执行：
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-                
-                // 3. 结束刷新
-                [self.tableView.mj_footer endRefreshing];
-            });
+            [self upData];
             
             
         }
     } fail:^(NSError *error) {
         // 主线程执行：
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"提示" message:@"服务器连接失败" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-            [av show];
-            
             // 结束刷新刷新 ，为了避免网络加载失败，一直显示刷新状态的错误
             [self.tableView.mj_header endRefreshing];
             // 3. 结束刷新
             [self.tableView.mj_footer endRefreshing];
+            
+            UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"提示" message:@"服务器连接失败" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [av show];
+            
         });
     }];
+}
+-(void)dowmData{
+    
+    [self.mArrNewlist removeAllObjects];
+    self.mArrNewlist = [NSMutableArray new];
+    
+    
+    NSMutableArray *newlistMarr = [NSMutableArray new];
+    newlistMarr = [self.data valueForKey:@"newlist"];
+    
+    for (int i = 0; i<newlistMarr.count; i++) {
+        
+        TableViewObject *obj = [[TableViewObject alloc]init];
+        obj.tid = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"tid"]];
+        obj.title = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"title"]];
+        obj.comart = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"comart"]];
+        obj.visit = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"visit"]];
+        obj.forword = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"forword"]];
+        obj.image = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"image"]];
+        
+        
+        obj.describe = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"describe"]];
+        obj.isopen = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"isopen"]];
+        
+        
+        [self.mArrNewlist addObject:obj];
+        
+        
+    }
+    
+    
+    // 主线程执行：
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.mArrNewlist.count > 0) {
+            //给tableView设置背景view
+            UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
+            [backImageView setImage:[UIImage imageNamed:@"0"]];
+            self.tableView.backgroundView = backImageView;
+        }else{
+            //给tableView设置背景view
+            UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
+            [backImageView setImage:[UIImage imageNamed:@"bgNO"]];
+            self.tableView.backgroundView = backImageView;
+        }
+        //2.刷新表格
+        [self.tableView reloadData];
+        
+        // 3. 结束刷新
+        [self.tableView.mj_header endRefreshing];
+    });
+}
+-(void)upData{
+    NSMutableArray *newlistMarr = [NSMutableArray new];
+    newlistMarr = [self.data valueForKey:@"newlist"];
+    
+    
+    if ([[self.data valueForKey:@"sum"] intValue] > [[NSString stringWithFormat:@"%lu",(unsigned long)self.mArrNewlist.count] intValue]) {
+        
+        for (int i = 0; i<newlistMarr.count; i++) {
+            
+            TableViewObject *obj = [[TableViewObject alloc]init];
+            
+            obj.tid = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"tid"]];
+            obj.title = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"title"]];
+            obj.comart = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"comart"]];
+            obj.visit = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"visit"]];
+            obj.forword = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"forword"]];
+            obj.image = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"image"]];
+            obj.describe = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"describe"]];
+            obj.isopen = [NSString stringWithFormat:@"%@",[newlistMarr[i] valueForKey:@"isopen"]];
+            
+            [self.mArrNewlist addObject:obj];
+            
+        }
+    }else{
+        pageNumber -= 1;
+        //                // 主线程执行：
+        //                dispatch_async(dispatch_get_main_queue(), ^{
+        //                    [self.tableView reloadData];
+        //                    // 变为没有更多数据的状态
+        //                    [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        //                    // 3. 结束刷新
+        //                    [self.tableView.mj_footer endRefreshing];
+        //                });
+        
+    }
+    //            NSLog(@" ===/n %@",self.mArrNewlist);
+    
+    // 主线程执行：
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+        //                self.tableView.mj_footer.state = MJRefreshBackFooterNoMoreDataText;
+        // 3. 结束刷新
+        [self.tableView.mj_footer endRefreshing];
+    });
 }
 -(void)creatTableView{
     

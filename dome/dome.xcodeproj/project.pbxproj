@@ -16,6 +16,7 @@
 		1A5430C6207DF75100A06513 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430C5207DF75100A06513 /* main.m */; };
 		1A5430D0207DF75100A06513 /* domeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430CF207DF75100A06513 /* domeTests.m */; };
 		1A5430DB207DF75100A06513 /* domeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430DA207DF75100A06513 /* domeUITests.m */; };
+		1ABFCAC12085B2BD00651C15 /* TeamObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFCAC02085B2BD00651C15 /* TeamObject.m */; };
 		1AD3F1F520844B600095DBD1 /* GuidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F1F420844B600095DBD1 /* GuidePageViewController.m */; };
 		1AD3F1FA20844BBE0095DBD1 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F1F820844BBD0095DBD1 /* RegisterViewController.m */; };
 		1AD3F1FD20844BCD0095DBD1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F1FC20844BCD0095DBD1 /* LoginViewController.m */; };
@@ -73,6 +74,8 @@
 		1A5430D6207DF75100A06513 /* domeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = domeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A5430DA207DF75100A06513 /* domeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = domeUITests.m; sourceTree = "<group>"; };
 		1A5430DC207DF75100A06513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1ABFCABF2085B2BD00651C15 /* TeamObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamObject.h; sourceTree = "<group>"; };
+		1ABFCAC02085B2BD00651C15 /* TeamObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamObject.m; sourceTree = "<group>"; };
 		1AD3F1F320844B600095DBD1 /* GuidePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidePageViewController.h; sourceTree = "<group>"; };
 		1AD3F1F420844B600095DBD1 /* GuidePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidePageViewController.m; sourceTree = "<group>"; };
 		1AD3F1F820844BBD0095DBD1 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
@@ -213,6 +216,15 @@
 		1AD3F1EE20844B040095DBD1 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				1AD3F238208486EF0095DBD1 /* ListTableViewCell.h */,
+				1AD3F239208486EF0095DBD1 /* ListTableViewCell.m */,
+				1AD3F23A208486EF0095DBD1 /* ListTableViewCell.xib */,
+				1AD3F23D20848AA70095DBD1 /* AdvertisingTableViewCell.h */,
+				1AD3F23E20848AA70095DBD1 /* AdvertisingTableViewCell.m */,
+				1AD3F23F20848AA70095DBD1 /* AdvertisingTableViewCell.xib */,
+				1AD3F2142084538A0095DBD1 /* LXScrollContentViewLib滑动切换页面 */,
+				1AD3F21B208454DE0095DBD1 /* TableViewViewController.h */,
+				1AD3F21C208454DE0095DBD1 /* TableViewViewController.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -220,6 +232,10 @@
 		1AD3F1EF20844B080095DBD1 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				1AD3F235208484D40095DBD1 /* TableViewObject.h */,
+				1AD3F236208484D40095DBD1 /* TableViewObject.m */,
+				1ABFCABF2085B2BD00651C15 /* TeamObject.h */,
+				1ABFCAC02085B2BD00651C15 /* TeamObject.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -256,10 +272,10 @@
 			children = (
 				1AD3F1FB20844BCD0095DBD1 /* LoginViewController.h */,
 				1AD3F1FC20844BCD0095DBD1 /* LoginViewController.m */,
+				1AD3F1FE20844BD90095DBD1 /* Tabbar */,
 				1AD3F20A20844BEC0095DBD1 /* 主页 */,
 				1AD3F20620844BE70095DBD1 /* 扩展团队 */,
 				1AD3F20220844BE30095DBD1 /* 个人中心 */,
-				1AD3F1FE20844BD90095DBD1 /* Tabbar */,
 			);
 			path = "登录";
 			sourceTree = "<group>";
@@ -305,17 +321,6 @@
 			children = (
 				1AD3F20C20844BEC0095DBD1 /* MainViewController.h */,
 				1AD3F20B20844BEC0095DBD1 /* MainViewController.m */,
-				1AD3F21B208454DE0095DBD1 /* TableViewViewController.h */,
-				1AD3F21C208454DE0095DBD1 /* TableViewViewController.m */,
-				1AD3F238208486EF0095DBD1 /* ListTableViewCell.h */,
-				1AD3F239208486EF0095DBD1 /* ListTableViewCell.m */,
-				1AD3F23A208486EF0095DBD1 /* ListTableViewCell.xib */,
-				1AD3F23D20848AA70095DBD1 /* AdvertisingTableViewCell.h */,
-				1AD3F23E20848AA70095DBD1 /* AdvertisingTableViewCell.m */,
-				1AD3F23F20848AA70095DBD1 /* AdvertisingTableViewCell.xib */,
-				1AD3F235208484D40095DBD1 /* TableViewObject.h */,
-				1AD3F236208484D40095DBD1 /* TableViewObject.m */,
-				1AD3F2142084538A0095DBD1 /* LXScrollContentViewLib滑动切换页面 */,
 			);
 			path = "主页";
 			sourceTree = "<group>";
@@ -565,6 +570,7 @@
 				1AD3F237208484D40095DBD1 /* TableViewObject.m in Sources */,
 				1A5430BB207DF75000A06513 /* ViewController.m in Sources */,
 				1AD3F1FA20844BBE0095DBD1 /* RegisterViewController.m in Sources */,
+				1ABFCAC12085B2BD00651C15 /* TeamObject.m in Sources */,
 				1AD3F20120844BD90095DBD1 /* TBViewController.m in Sources */,
 				1A5430C6207DF75100A06513 /* main.m in Sources */,
 				1AD3F1F520844B600095DBD1 /* GuidePageViewController.m in Sources */,
@@ -755,7 +761,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = dome/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -763,6 +769,23 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.dome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				WARNING_CFLAGS = (
+					"-Wshorten-64-to-32",
+					"-Wundeclared-selector",
+					"-Wunused-variable",
+					"-int-conversion",
+					"-Wunguarded-availability",
+					"-Wreceiver-is-weak",
+					"-Wstrict-prototypes",
+					"-Wmismatched-parameter-types",
+					"-Wunused-command-line-argument",
+					"-Wunknown-warning-option",
+					"-Wunused-command-line-argument",
+					"-Wunknown-warning-option",
+					"-Wdeprecated-declarations",
+					"-Wshorten-64-to-32",
+					"-Wincompatible-pointer-types",
+				);
 			};
 			name = Debug;
 		};
@@ -778,7 +801,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = dome/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -786,6 +809,23 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.weibangshijie.www.dome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				WARNING_CFLAGS = (
+					"-Wshorten-64-to-32",
+					"-Wundeclared-selector",
+					"-Wunused-variable",
+					"-int-conversion",
+					"-Wunguarded-availability",
+					"-Wreceiver-is-weak",
+					"-Wstrict-prototypes",
+					"-Wmismatched-parameter-types",
+					"-Wunused-command-line-argument",
+					"-Wunknown-warning-option",
+					"-Wunused-command-line-argument",
+					"-Wunknown-warning-option",
+					"-Wdeprecated-declarations",
+					"-Wshorten-64-to-32",
+					"-Wincompatible-pointer-types",
+				);
 			};
 			name = Release;
 		};
