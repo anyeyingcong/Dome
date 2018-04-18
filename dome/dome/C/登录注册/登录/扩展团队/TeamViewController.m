@@ -17,6 +17,8 @@
 @property (nonatomic) int *listNumber;
 
 
+@property (nonatomic) id data;
+
 @end
 
 @implementation TeamViewController
@@ -39,9 +41,20 @@
     
     [self downTabView];
     
-    if ([SQLObject SQLTableName:@"main"] != nil) {//如果缓存是空值，去服务器请求数据并且存到SQL
-        id dict = [NSJSONSerialization JSONObjectWithData:[SQLObject SQLTableName:@"main"] options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
-    }
+    
+    //创建一个并行队列
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        if ([SQLObject SQLTableName:@"team"] != nil) {//如果缓存是空值，去服务器请求数据并且存到SQL
+            id dict = [NSJSONSerialization JSONObjectWithData:[SQLObject SQLTableName:@"team"] options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+            NSLog(@" ===\n %@",dict);
+            self.data = dict;
+            [self dataUpdate];
+        }else{
+            NSLog(@" ===\n %@",[SQLObject SQLTableName:@"team"]);
+            
+            [self.tableView.mj_header beginRefreshing];
+        }
+    });
 }
 -(void)downTabView{
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -64,48 +77,9 @@
 }
 -(void)loadCellData{
     [NetworkObject postNetworkRequestWithUrlString:[NSString stringWithFormat:@"%@user/index",IP] parameters:@{@"Uid":@"62",@"actType":@"myTeam",@"Way":@"pass",@"token":[NetworkObject md5:@"bangbang"]} isCache:YES isUpdate:YES tableName:@"team" succeed:^(id data) {
+        self.data = data;
+        [self dataUpdate];
         
-        if (([[NSString stringWithFormat:@"%@",[data valueForKey:@"code"]] isEqualToString:@"200"])) {
-            
-            self.mtMarr = [NSMutableArray new];
-            
-            
-            NSMutableArray *mArr = [data valueForKey:@"errorMessage"];
-            
-            
-            if ([[NSString stringWithFormat:@"%lu",(unsigned long)mArr.count] isEqualToString:@"0"]) {//获取的数据为空值
-                
-                self.listNumber = 0;
-                
-            }else{//获取非空数据
-                
-                
-                for (int i = 0; i<mArr.count; i++) {
-                    TeamObject *obj = [[TeamObject alloc]init];
-                    
-                    obj.upper_level = [NSString stringWithFormat:@"%@",[mArr[i] valueForKey:@"upper_level"]];
-                    obj.uname = [NSString stringWithFormat:@"%@",[mArr[i] valueForKey:@"uname"]];
-                    obj.headimg = [NSString stringWithFormat:@"%@",[mArr[i] valueForKey:@"headimg"]];
-                    [self.mtMarr addObject:obj];
-                }
-            }
-            
-            self.listNumber = (int)self.mtMarr.count;
-            // 主线程执行：
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-                [self.tableView.mj_header endRefreshing];
-
-            });
-            
-        }else{
-            // 主线程执行：
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"提示" message:[data valueForKey:@"errorMessage"] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
-                [av show];
-            });
-            
-        }
     } fail:^(NSError *error) {
         
         // 主线程执行：
@@ -118,6 +92,55 @@
         });
 
     }];
+}
+-(void)dataUpdate{
+    
+    if (([[NSString stringWithFormat:@"%@",[self.data valueForKey:@"code"]] isEqualToString:@"200"])) {
+        
+        self.mtMarr = [NSMutableArray new];
+        
+        
+        NSMutableArray *mArr = [self.data valueForKey:@"errorMessage"];
+        
+        
+        if ([[NSString stringWithFormat:@"%lu",(unsigned long)mArr.count] isEqualToString:@"0"]) {//获取的数据为空值
+            
+            self.listNumber = 0;
+            
+            
+        }else{//获取非空数据
+            UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
+            [backImageView setImage:[UIImage imageNamed:@""]];
+            self.tableView.backgroundView = backImageView;
+            
+            for (int i = 0; i<mArr.count; i++) {
+                TeamObject *obj = [[TeamObject alloc]init];
+                
+                obj.upper_level = [NSString stringWithFormat:@"%@",[mArr[i] valueForKey:@"upper_level"]];
+                obj.uname = [NSString stringWithFormat:@"%@",[mArr[i] valueForKey:@"uname"]];
+                obj.headimg = [NSString stringWithFormat:@"%@",[mArr[i] valueForKey:@"headimg"]];
+                [self.mtMarr addObject:obj];
+            }
+        }
+        
+        self.listNumber = (int)self.mtMarr.count;
+        // 主线程执行：
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+            [self.tableView.mj_header endRefreshing];
+            
+        });
+        
+    }else{
+        // 主线程执行：
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 结束刷新刷新 ，为了避免网络加载失败，一直显示刷新状态的错误
+            [self.tableView.mj_header endRefreshing];
+            UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"提示" message:[self.data valueForKey:@"errorMessage"] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+            [av show];
+        });
+        
+    }
 }
 -(void)creatTableView{
     
@@ -259,6 +282,13 @@
     // 导航栏背景颜色
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"title_bar_2"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];// 导航栏左右按钮字体颜色
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"my_team_add_friends_white"] style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonClick)];
+    
+}
+#pragma mark 扩展团队按钮
+
+-(void)rightBarButtonClick{
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

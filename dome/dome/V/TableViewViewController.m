@@ -52,13 +52,14 @@ static int pageNumber = 0;
 }
 - (void)viewDidLoad {
     
-//        NSLog(@" ===\n %@",[NSString stringWithFormat:@"tabView%@",self.carId]);
 
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     [self creatTableView];
     [self upOrDownTabView];//上拉加载下拉刷新
+    
+    NSLog(@" ===\n %@",self.carId);
 
     
 }
@@ -69,7 +70,8 @@ static int pageNumber = 0;
     //或
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(setDownRefresh)];
-    
+    //马上进入刷新状态
+//    [self.tableView.mj_header beginRefreshing];
     
     //上拉加载
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
@@ -181,12 +183,7 @@ static int pageNumber = 0;
         if (self.mArrNewlist.count > 0) {
             //给tableView设置背景view
             UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
-            [backImageView setImage:[UIImage imageNamed:@"0"]];
-            self.tableView.backgroundView = backImageView;
-        }else{
-            //给tableView设置背景view
-            UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
-            [backImageView setImage:[UIImage imageNamed:@"bgNO"]];
+            [backImageView setImage:[UIImage imageNamed:@""]];
             self.tableView.backgroundView = backImageView;
         }
         //2.刷新表格
@@ -269,10 +266,10 @@ static int pageNumber = 0;
 //    tableHeaderView.backgroundColor = [UIColor redColor];
 //    self.tableView.tableHeaderView = tableHeaderView;
     
-//    //给tableView设置背景view
-//    UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
-//    [backImageView setImage:[UIImage imageNamed:@"bgNO"]];
-//    self.tableView.backgroundView = backImageView;
+    //给tableView设置背景view
+    UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
+    [backImageView setImage:[UIImage imageNamed:@"bgNO"]];
+    self.tableView.backgroundView = backImageView;
     
     
 }

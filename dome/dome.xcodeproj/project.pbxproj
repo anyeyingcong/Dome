@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A345B342086EA4600353074 /* CenterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A345B332086EA4600353074 /* CenterObject.m */; };
 		1A4DE9A0207E060E007D3BF3 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4DE99F207E060E007D3BF3 /* NewViewController.m */; };
 		1A5430B8207DF75000A06513 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430B7207DF75000A06513 /* AppDelegate.m */; };
 		1A5430BB207DF75000A06513 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430BA207DF75000A06513 /* ViewController.m */; };
@@ -17,6 +18,8 @@
 		1A5430D0207DF75100A06513 /* domeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430CF207DF75100A06513 /* domeTests.m */; };
 		1A5430DB207DF75100A06513 /* domeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5430DA207DF75100A06513 /* domeUITests.m */; };
 		1ABFCAC12085B2BD00651C15 /* TeamObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFCAC02085B2BD00651C15 /* TeamObject.m */; };
+		1ABFCAC5208604E800651C15 /* CenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFCAC3208604E800651C15 /* CenterTableViewCell.m */; };
+		1ABFCAC6208604E800651C15 /* CenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ABFCAC4208604E800651C15 /* CenterTableViewCell.xib */; };
 		1AD3F1F520844B600095DBD1 /* GuidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F1F420844B600095DBD1 /* GuidePageViewController.m */; };
 		1AD3F1FA20844BBE0095DBD1 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F1F820844BBD0095DBD1 /* RegisterViewController.m */; };
 		1AD3F1FD20844BCD0095DBD1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3F1FC20844BCD0095DBD1 /* LoginViewController.m */; };
@@ -55,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A345B322086EA4600353074 /* CenterObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CenterObject.h; sourceTree = "<group>"; };
+		1A345B332086EA4600353074 /* CenterObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CenterObject.m; sourceTree = "<group>"; };
 		1A4DE99E207E060E007D3BF3 /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
 		1A4DE99F207E060E007D3BF3 /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 		1A4DE9A1207E06A5007D3BF3 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -76,6 +81,9 @@
 		1A5430DC207DF75100A06513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1ABFCABF2085B2BD00651C15 /* TeamObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamObject.h; sourceTree = "<group>"; };
 		1ABFCAC02085B2BD00651C15 /* TeamObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamObject.m; sourceTree = "<group>"; };
+		1ABFCAC2208604E800651C15 /* CenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CenterTableViewCell.h; sourceTree = "<group>"; };
+		1ABFCAC3208604E800651C15 /* CenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CenterTableViewCell.m; sourceTree = "<group>"; };
+		1ABFCAC4208604E800651C15 /* CenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CenterTableViewCell.xib; sourceTree = "<group>"; };
 		1AD3F1F320844B600095DBD1 /* GuidePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidePageViewController.h; sourceTree = "<group>"; };
 		1AD3F1F420844B600095DBD1 /* GuidePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidePageViewController.m; sourceTree = "<group>"; };
 		1AD3F1F820844BBD0095DBD1 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
@@ -225,6 +233,9 @@
 				1AD3F2142084538A0095DBD1 /* LXScrollContentViewLib滑动切换页面 */,
 				1AD3F21B208454DE0095DBD1 /* TableViewViewController.h */,
 				1AD3F21C208454DE0095DBD1 /* TableViewViewController.m */,
+				1ABFCAC2208604E800651C15 /* CenterTableViewCell.h */,
+				1ABFCAC3208604E800651C15 /* CenterTableViewCell.m */,
+				1ABFCAC4208604E800651C15 /* CenterTableViewCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -236,6 +247,8 @@
 				1AD3F236208484D40095DBD1 /* TableViewObject.m */,
 				1ABFCABF2085B2BD00651C15 /* TeamObject.h */,
 				1ABFCAC02085B2BD00651C15 /* TeamObject.m */,
+				1A345B322086EA4600353074 /* CenterObject.h */,
+				1A345B332086EA4600353074 /* CenterObject.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -319,8 +332,8 @@
 		1AD3F20A20844BEC0095DBD1 /* 主页 */ = {
 			isa = PBXGroup;
 			children = (
-				1AD3F20C20844BEC0095DBD1 /* MainViewController.h */,
 				1AD3F20B20844BEC0095DBD1 /* MainViewController.m */,
+				1AD3F20C20844BEC0095DBD1 /* MainViewController.h */,
 			);
 			path = "主页";
 			sourceTree = "<group>";
@@ -463,6 +476,7 @@
 				1AD3F23C208486EF0095DBD1 /* ListTableViewCell.xib in Resources */,
 				1A5430C0207DF75100A06513 /* Assets.xcassets in Resources */,
 				1AD3F24120848AA70095DBD1 /* AdvertisingTableViewCell.xib in Resources */,
+				1ABFCAC6208604E800651C15 /* CenterTableViewCell.xib in Resources */,
 				1A5430BE207DF75000A06513 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,6 +590,8 @@
 				1AD3F1F520844B600095DBD1 /* GuidePageViewController.m in Sources */,
 				1AD3F21D208454DE0095DBD1 /* TableViewViewController.m in Sources */,
 				1AD3F213208451720095DBD1 /* SQLObject.m in Sources */,
+				1A345B342086EA4600353074 /* CenterObject.m in Sources */,
+				1ABFCAC5208604E800651C15 /* CenterTableViewCell.m in Sources */,
 				1AD3F23B208486EF0095DBD1 /* ListTableViewCell.m in Sources */,
 				1AD3F20920844BE70095DBD1 /* TeamViewController.m in Sources */,
 				1AD3F212208451720095DBD1 /* NetworkObject.m in Sources */,

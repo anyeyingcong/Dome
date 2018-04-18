@@ -18,7 +18,7 @@
 
 +(void)creatSQLTableName:(NSString *)tableName{//创建数据库
     
-    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",tableName]];
+    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite",tableName]];
     //2.获取数据库
     FMDatabase *db = [FMDatabase databaseWithPath:path];
     
@@ -69,7 +69,7 @@
     
     //self.responseObject
     
-    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",tableName]];
+    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite",tableName]];
     //2.获取数据库
     FMDatabase *db = [FMDatabase databaseWithPath:path];
     
@@ -120,7 +120,7 @@
 +(NSData *)SQLTableName:(NSString *)tableName{
     
     
-    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",tableName]];
+    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite",tableName]];
     //2.获取数据库
     FMDatabase *db = [FMDatabase databaseWithPath:path];
     

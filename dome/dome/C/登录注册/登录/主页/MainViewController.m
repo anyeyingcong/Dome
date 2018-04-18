@@ -27,6 +27,8 @@
 
 @property (nonatomic) NSMutableArray *carIdMarr;//分类信息的id
 
+@property (nonatomic) id data;
+
 @end
 
 @implementation MainViewController
@@ -39,16 +41,12 @@
 }
 - (void)viewDidLoad {
     
-    [self getHubUI];
     
-    //创建一个并行队列
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
-        [self getRequestData];
-    });
    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self reloadData];
     
     [self setNVC];//设置导航栏
     
@@ -56,6 +54,23 @@
     
     
     [self creatTableViewControllers];//创建每个分类的TableViewController
+    
+    //创建一个并行队列
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        if ([SQLObject SQLTableName:@"main"] != nil) {//如果缓存是空值，去服务器请求数据并且存到SQL
+            id dict = [NSJSONSerialization JSONObjectWithData:[SQLObject SQLTableName:@"main"] options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+            self.data = dict;
+            [self dataUpdate];
+        }else{
+            // 主线程执行：
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self getHubUI];
+            });
+            [self getRequestData];
+        }
+    });
+    
+    
 }
 -(void)setNVC{
     self.title = @"主页";
@@ -96,56 +111,10 @@
 }
 -(void)getRequestData{
     
-    [NetworkObject postNetworkRequestWithUrlString:[NSString stringWithFormat:@"%@index/index",IP] parameters:@{@"carId":@"0",@"page":@"0",@"token":[NetworkObject md5:@"bangbang"]} isCache:YES isUpdate:NO tableName:@"main" succeed:^(id data) {
-        NSLog(@" ===\n %@",data);
-        self.car_infonameMarr = [NSMutableArray new];
-        self.carIdMarr = [NSMutableArray new];
-        NSMutableArray *carlistMarr = [NSMutableArray new];
-        carlistMarr = [data valueForKey:@"carlist"];
-        for (int i = 0; i<[carlistMarr count]; i++) {
-            
-            [self.car_infonameMarr addObject:[NSString stringWithFormat:@"%@",[carlistMarr[i] valueForKey:@"car_infoname"]]];
-            
-            [self.carIdMarr addObject:[NSString stringWithFormat:@"%@",[carlistMarr[i] valueForKey:@"id"]]];
-        }
+    [NetworkObject postNetworkRequestWithUrlString:[NSString stringWithFormat:@"%@index/index",IP] parameters:@{@"carId":@"0",@"page":@"0",@"token":[NetworkObject md5:@"bangbang"]} isCache:YES isUpdate:YES tableName:@"main" succeed:^(id data) {
         
-        
-        
-        self.contMarr = [NSMutableArray new];
-        NSMutableArray *permetMarr = [NSMutableArray new];
-        permetMarr = [data valueForKey:@"permet"];
-        for (int i = 0; i<[permetMarr count]; i++) {
-            [self.contMarr addObject:[NSString stringWithFormat:@"%@",[permetMarr[i] valueForKey:@"cont"]]];
-        }
-        
-//        NSString *text;
-//        if (self.contMarr.count <= 0) {
-//            text = @"小帮手";
-//            [self.titleBut setTitleColor:[UIColor colorWithRed:55/255.f green:101/255.f blue:11/255.f alpha:1] forState:UIControlStateNormal];
-//
-//        }else{
-//            text = [NSString stringWithFormat:@"小帮手:%@",self.contMarr[0]];
-//            // 1.创建NSMutableAttributedString实例
-//            NSMutableAttributedString *fontAttributeNameStr = [[NSMutableAttributedString alloc]initWithString:text];
-//
-//            [fontAttributeNameStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:55/255.f green:101/255.f blue:11/255.f alpha:1] range:NSMakeRange(0, 4)];
-//            [fontAttributeNameStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:78/255.f green:75/255.f blue:74/255.f alpha:0.5f] range:NSMakeRange(4, text.length - 4)];
-//
-//            // 3.给label赋值
-//            //            [self.titleBut setTitle:fontAttributeNameStr forState:UIControlStateNormal];
-//            self.titleBut.titleLabel.attributedText = fontAttributeNameStr;
-//            [self.titleBut setAttributedTitle:fontAttributeNameStr forState:UIControlStateNormal];
-//        }
-        
-        
-        // 主线程执行：
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.hub hide:YES];
-            [self reloadData];
-
-        });
-        
-        NSLog(@" ===\n %@",[data valueForKey:@"carlist"]);
+        self.data = data;
+        [self dataUpdate];
         
     } fail:^(NSError *error) {
         
@@ -157,7 +126,57 @@
     }];
 }
 
-
+-(void)dataUpdate{
+    NSLog(@" ===\n %@",self.data);
+    self.car_infonameMarr = [NSMutableArray new];
+    self.carIdMarr = [NSMutableArray new];
+    NSMutableArray *carlistMarr = [NSMutableArray new];
+    carlistMarr = [self.data valueForKey:@"carlist"];
+    for (int i = 0; i<[carlistMarr count]; i++) {
+        
+        [self.car_infonameMarr addObject:[NSString stringWithFormat:@"%@",[carlistMarr[i] valueForKey:@"car_infoname"]]];
+        
+        [self.carIdMarr addObject:[NSString stringWithFormat:@"%@",[carlistMarr[i] valueForKey:@"id"]]];
+    }
+    
+    
+    
+    self.contMarr = [NSMutableArray new];
+    NSMutableArray *permetMarr = [NSMutableArray new];
+    permetMarr = [self.data valueForKey:@"permet"];
+    for (int i = 0; i<[permetMarr count]; i++) {
+        [self.contMarr addObject:[NSString stringWithFormat:@"%@",[permetMarr[i] valueForKey:@"cont"]]];
+    }
+    
+    //        NSString *text;
+    //        if (self.contMarr.count <= 0) {
+    //            text = @"小帮手";
+    //            [self.titleBut setTitleColor:[UIColor colorWithRed:55/255.f green:101/255.f blue:11/255.f alpha:1] forState:UIControlStateNormal];
+    //
+    //        }else{
+    //            text = [NSString stringWithFormat:@"小帮手:%@",self.contMarr[0]];
+    //            // 1.创建NSMutableAttributedString实例
+    //            NSMutableAttributedString *fontAttributeNameStr = [[NSMutableAttributedString alloc]initWithString:text];
+    //
+    //            [fontAttributeNameStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:55/255.f green:101/255.f blue:11/255.f alpha:1] range:NSMakeRange(0, 4)];
+    //            [fontAttributeNameStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:78/255.f green:75/255.f blue:74/255.f alpha:0.5f] range:NSMakeRange(4, text.length - 4)];
+    //
+    //            // 3.给label赋值
+    //            //            [self.titleBut setTitle:fontAttributeNameStr forState:UIControlStateNormal];
+    //            self.titleBut.titleLabel.attributedText = fontAttributeNameStr;
+    //            [self.titleBut setAttributedTitle:fontAttributeNameStr forState:UIControlStateNormal];
+    //        }
+    
+    
+    // 主线程执行：
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.hub hide:YES];
+        [self reloadData];
+        
+    });
+    
+//    NSLog(@" ===\n %@",[self.data valueForKey:@"carlist"]);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -176,7 +195,7 @@
     
     
     
-    self.contentView.currentIndex = selectedIndex;
+//    self.contentView.currentIndex = selectedIndex;
     
     
 }
@@ -187,7 +206,7 @@
 
 - (void)contentViewDidEndDecelerating:(LXScrollContentView *)contentView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex{
     
-    self.titleView.selectedIndex = endIndex;
+//    self.titleView.selectedIndex = endIndex;
     
 }
 
@@ -202,7 +221,6 @@
     
     for (int i = 0; i<titles.count; i++) {
         TableViewViewController *vc = [[TableViewViewController alloc] init];
-        //self.carIdMarr[i];
         vc.carId = self.carIdMarr[i];
         [self.vcs addObject:vc];
     }
