@@ -140,6 +140,7 @@
 //            NSLog(@" ===\n %@",[resultSet stringForColumn:@"data"]);
 
             dataString = [resultSet stringForColumn:@"data"];
+            
         }
 
     }

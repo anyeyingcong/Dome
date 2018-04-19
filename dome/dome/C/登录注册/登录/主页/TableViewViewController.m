@@ -10,6 +10,7 @@
 #import "TableViewObject.h"
 #import "ListTableViewCell.h"
 #import "AdvertisingTableViewCell.h"
+#import "WKWebView/MainWKWebView.h"
 @interface TableViewViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) NSMutableArray *titleArr;//标题数组
@@ -468,8 +469,18 @@ static NSString *AdvertisingCell = @"AdvertisingCell";
 #pragma mark 设置表cell点击事件
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     // 1 松开手选中颜色消失
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];//选中变一下色
+    
+    TableViewObject *obj = [[TableViewObject alloc]init];
+    obj = self.mArrNewlist[indexPath.row];
+    
+    MainWKWebView *vc = [[MainWKWebView alloc]init];
+    vc.tid = obj.tid;
+    vc.shareTitle = obj.title;
+    vc.shareComart = obj.comart;
+    vc.shareImage = [NSString stringWithFormat:@"%@%@",imgIP,obj.image];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 - (void)didReceiveMemoryWarning {
