@@ -354,21 +354,13 @@ static NSString *CenterCell = @"CenterCell";
             if (([[NSString stringWithFormat:@"%@",[self.data valueForKey:@"code"]] isEqualToString:@"200"])) {//签到成功
                 // 主线程执行：
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    if ([[NSString stringWithFormat:@"%@",[self.data valueForKey:@"sign"]] isEqualToString:@"0"]) {
-                        
-                        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];// 导航栏左右按钮字体颜色
-                    }else{
-                        
-                        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:190/255.f green:227/255.f blue:222/255.f alpha:.6];// 导航栏左右按钮字体颜色
-                    }
-                    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"提示" message:@"每天只能成功一次签到" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-                    [av show];
+                    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:190/255.f green:227/255.f blue:222/255.f alpha:.6];// 导航栏左右按钮字体颜色
                 });
-                
+
             }else{//签到未成功
                 // 主线程执行：
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];// 导航栏左右按钮字体颜色
                     UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"提示" message:[self.data valueForKey:@"errorMessage"] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
                     [av show];
                 });
