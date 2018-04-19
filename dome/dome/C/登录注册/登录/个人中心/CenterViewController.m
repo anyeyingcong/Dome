@@ -225,9 +225,19 @@ static NSString *CenterCell = @"CenterCell";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;//右箭头
 
             [cell.headPortraitImgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[self.data valueForKey:@"headImg"]]] placeholderImage:[UIImage imageNamed:@"personal_center_sign_head_portrait"]];
+        
+            if ([[NSString stringWithFormat:@"%@",[self.data valueForKey:@"nickName"]] isEqualToString:@"(null)"]) {
+                cell.nameLab.text = @"";
+            }else{
+                cell.nameLab.text = [NSString stringWithFormat:@"%@",[self.data valueForKey:@"nickName"]];
+            }
             
-            cell.nameLab.text = [NSString stringWithFormat:@"%@",[self.data valueForKey:@"nickName"]];
-            cell.InviteCodeLab.text = [NSString stringWithFormat:@"%@",[self.data valueForKey:@"invate"]];
+            if ([[NSString stringWithFormat:@"%@",[self.data valueForKey:@"invate"]] isEqualToString:@"(null)"]) {
+                cell.InviteCodeLab.text = @"";
+
+            }else{
+                cell.InviteCodeLab.text = [NSString stringWithFormat:@"%@",[self.data valueForKey:@"invate"]];
+            }
             return cell;
         }
             break;

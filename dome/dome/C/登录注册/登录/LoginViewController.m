@@ -24,8 +24,6 @@
     
     [super viewWillAppear:animated];
     self.edgesForExtendedLayout = UIRectEdgeNone;//从nav底部开始
-
-    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

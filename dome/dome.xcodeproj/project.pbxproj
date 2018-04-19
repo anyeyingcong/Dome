@@ -332,8 +332,8 @@
 			children = (
 				1AD3F20B20844BEC0095DBD1 /* MainViewController.m */,
 				1AD3F20C20844BEC0095DBD1 /* MainViewController.h */,
-				1AD3F21B208454DE0095DBD1 /* TableViewViewController.h */,
 				1AD3F21C208454DE0095DBD1 /* TableViewViewController.m */,
+				1AD3F21B208454DE0095DBD1 /* TableViewViewController.h */,
 			);
 			path = "主页";
 			sourceTree = "<group>";
