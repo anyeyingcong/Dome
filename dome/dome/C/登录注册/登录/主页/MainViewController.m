@@ -46,7 +46,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self reloadData];
+//    [self reloadData];
     
     [self setNVC];//设置导航栏
     
@@ -172,7 +172,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.hub hide:YES];
         [self reloadData];
-        
     });
     
 //    NSLog(@" ===\n %@",[self.data valueForKey:@"carlist"]);
@@ -195,7 +194,7 @@
     
     
     
-//    self.contentView.currentIndex = selectedIndex;
+    self.contentView.currentIndex = selectedIndex;
     
     
 }
@@ -206,7 +205,7 @@
 
 - (void)contentViewDidEndDecelerating:(LXScrollContentView *)contentView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex{
     
-//    self.titleView.selectedIndex = endIndex;
+    self.titleView.selectedIndex = endIndex;
     
 }
 
@@ -218,14 +217,26 @@
     self.titleView.segmentTitles = titles;
     
     self.vcs = [[NSMutableArray alloc] init];
-    
+//    //创建一个并行队列
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        for (int i = 0; i<titles.count; i++) {
+//            TableViewViewController *vc = [[TableViewViewController alloc] init];
+//            vc.carId = self.carIdMarr[i];
+//            [self.vcs addObject:vc];
+//        }
+//    });
     for (int i = 0; i<titles.count; i++) {
         TableViewViewController *vc = [[TableViewViewController alloc] init];
         vc.carId = self.carIdMarr[i];
         [self.vcs addObject:vc];
     }
+//    // 主线程执行：
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [self.contentView reloadViewWithChildVcs:self.vcs parentVC:self];
+//    });
     
     [self.contentView reloadViewWithChildVcs:self.vcs parentVC:self];
+
     self.titleView.selectedIndex = 0;
     self.contentView.currentIndex = 0;
 }

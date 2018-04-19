@@ -231,8 +231,6 @@
 				1AD3F23E20848AA70095DBD1 /* AdvertisingTableViewCell.m */,
 				1AD3F23F20848AA70095DBD1 /* AdvertisingTableViewCell.xib */,
 				1AD3F2142084538A0095DBD1 /* LXScrollContentViewLib滑动切换页面 */,
-				1AD3F21B208454DE0095DBD1 /* TableViewViewController.h */,
-				1AD3F21C208454DE0095DBD1 /* TableViewViewController.m */,
 				1ABFCAC2208604E800651C15 /* CenterTableViewCell.h */,
 				1ABFCAC3208604E800651C15 /* CenterTableViewCell.m */,
 				1ABFCAC4208604E800651C15 /* CenterTableViewCell.xib */,
@@ -334,6 +332,8 @@
 			children = (
 				1AD3F20B20844BEC0095DBD1 /* MainViewController.m */,
 				1AD3F20C20844BEC0095DBD1 /* MainViewController.h */,
+				1AD3F21B208454DE0095DBD1 /* TableViewViewController.h */,
+				1AD3F21C208454DE0095DBD1 /* TableViewViewController.m */,
 			);
 			path = "主页";
 			sourceTree = "<group>";

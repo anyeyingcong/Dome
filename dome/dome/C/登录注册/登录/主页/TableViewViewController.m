@@ -32,8 +32,22 @@ static int pageNumber = 0;
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-//    NSLog(@" ===\n %@",[NSString stringWithFormat:@"tabView%@",self.carId]);
+    
+}
+- (void)viewDidLoad {
+    
 
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    [self creatTableView];
+    [self upOrDownTabView];//上拉加载下拉刷新
+    
+//    NSLog(@" ===\n %@",self.carId);
+
+    [self performSelector:@selector(way) withObject:nil afterDelay:0.01f];
+}
+-(void)way{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         if ([SQLObject SQLTableName:[NSString stringWithFormat:@"tabView%@",self.carId]] != nil) {//如果缓存是空值，去服务器请求数据并且存到SQL
             id dict = [NSJSONSerialization JSONObjectWithData:[SQLObject SQLTableName:[NSString stringWithFormat:@"tabView%@",self.carId]] options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
@@ -48,34 +62,24 @@ static int pageNumber = 0;
         }
 
     });
-    
-}
-- (void)viewDidLoad {
-    
-
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    [self creatTableView];
-    [self upOrDownTabView];//上拉加载下拉刷新
-    
-    NSLog(@" ===\n %@",self.carId);
-
-    
 }
 -(void)upOrDownTabView{
+    
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block
+
     }];
     //或
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(setDownRefresh)];
     //马上进入刷新状态
 //    [self.tableView.mj_header beginRefreshing];
+
     
     //上拉加载
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block
+
     }];
     //或
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
@@ -86,12 +90,14 @@ static int pageNumber = 0;
  */
 -(void)setDownRefresh
 {
-    
+//    NSLog(@" ===\n %@",self.carId);
+
     self.upOrDown = @"down";
     pageNumber = 0;
     //创建一个并行队列
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self loadCellData];
+
     });
 }
 /**
@@ -110,6 +116,7 @@ static int pageNumber = 0;
 -(void)loadCellData{
     
     NSLog(@" ===\n %@",[NSString stringWithFormat:@"%d",pageNumber]);
+    
     
     BOOL yesOrNo = false;
     if ([self.upOrDown isEqualToString:@"down"]) {
@@ -185,6 +192,11 @@ static int pageNumber = 0;
             UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
             [backImageView setImage:[UIImage imageNamed:@""]];
             self.tableView.backgroundView = backImageView;
+        }else{
+            //给tableView设置背景view
+            UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
+            [backImageView setImage:[UIImage imageNamed:@"bgNO"]];
+            self.tableView.backgroundView = backImageView;
         }
         //2.刷新表格
         [self.tableView reloadData];
@@ -216,27 +228,23 @@ static int pageNumber = 0;
             [self.mArrNewlist addObject:obj];
             
         }
+        
+       
     }else{
         pageNumber -= 1;
-        //                // 主线程执行：
-        //                dispatch_async(dispatch_get_main_queue(), ^{
-        //                    [self.tableView reloadData];
-        //                    // 变为没有更多数据的状态
-        //                    [self.tableView.mj_footer endRefreshingWithNoMoreData];
-        //                    // 3. 结束刷新
-        //                    [self.tableView.mj_footer endRefreshing];
-        //                });
         
     }
-    //            NSLog(@" ===/n %@",self.mArrNewlist);
-    
     // 主线程执行：
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
-        //                self.tableView.mj_footer.state = MJRefreshBackFooterNoMoreDataText;
+        
+        self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
         // 3. 结束刷新
         [self.tableView.mj_footer endRefreshing];
+        //            [self.tableView.mj_footer resetNoMoreData];
+        
     });
+    
 }
 -(void)creatTableView{
     
@@ -265,11 +273,6 @@ static int pageNumber = 0;
 //    UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_HEIGHT, 30)];
 //    tableHeaderView.backgroundColor = [UIColor redColor];
 //    self.tableView.tableHeaderView = tableHeaderView;
-    
-    //给tableView设置背景view
-    UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
-    [backImageView setImage:[UIImage imageNamed:@"bgNO"]];
-    self.tableView.backgroundView = backImageView;
     
     
 }
