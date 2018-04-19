@@ -20,6 +20,9 @@
 @property (nonatomic) NSString *url;
 @property (nonatomic) WYWebProgressLayer *progressLayer; ///< 网页加载进度条
 
+@property (nonatomic) MBProgressHUD *hub;
+
+
 @end
 
 @implementation MainWKWebView
@@ -43,6 +46,10 @@
             self.data = dict;
             [self dataUpdate];
         }else{
+            dispatch_async(dispatch_get_main_queue(), ^
+                           {
+                               [self getHubUI];
+                           });
             [self dataRequst];
         }
     });
@@ -54,6 +61,17 @@
 }
 -(void)rightBarButtonClick{
     
+}
+-(void)getHubUI{
+    self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //13,是否强制背景框宽高相等
+    //            self.hub.square = YES;
+    //设置对话框文字
+    self.hub.labelText = @"加载中";
+    
+    //细节文字
+    self.hub.detailsLabelText = @"请耐心等待";
+    self.hub.opacity = 0.5f;
 }
 -(UIWebView *)creatWebView{
     if (!self.webView) {
@@ -68,7 +86,7 @@
 #pragma mark - UIWebViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     
-    _progressLayer = [WYWebProgressLayer layerWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 2)];
+    _progressLayer = [WYWebProgressLayer layerWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 2)];
     [self.view.layer addSublayer:_progressLayer];
     [_progressLayer startLoad];
 }
@@ -80,9 +98,9 @@
 #pragma mark -网页加载完毕，注册ios对象，并且自动检查打印机是否自动连接
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     
-//    [_progressLayer finishedLoad];
+    [_progressLayer finishedLoad];
     
-    [JWCacheURLProtocol cancelListeningNetWorking];
+//    [JWCacheURLProtocol cancelListeningNetWorking];
     
 }
 -(void)dataRequst{
@@ -92,7 +110,10 @@
         self.data = data;
         [self dataUpdate];
     } fail:^(NSError *error) {
-        
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           [self.hub hide:YES];
+                       });
     }];
 }
 -(void)dataUpdate{
@@ -105,12 +126,14 @@
 
         dispatch_async(dispatch_get_main_queue(), ^
         {
-            [JWCacheURLProtocol startListeningNetWorking];
+            [self.hub hide:YES];
+//            [JWCacheURLProtocol startListeningNetWorking];
             [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
         });
     }else
     {
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.hub hide:YES];
             UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请求数据失败" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
             [av show];
             

@@ -21,6 +21,8 @@
     
     [self isTtTheFirstRun];////判断APP是否第一次登录
     
+    [NSURLProtocol registerClass:[JWCacheURLProtocol class]];
+    
     return YES;
 }
 
