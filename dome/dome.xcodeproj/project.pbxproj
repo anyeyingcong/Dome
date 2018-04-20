@@ -23,6 +23,7 @@
 		1A6142662088888C0075B05E /* WLWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A61425D2088888C0075B05E /* WLWebProgressLayer.m */; };
 		1A6142672088888C0075B05E /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6142602088888C0075B05E /* NSTimer+addition.m */; };
 		1A6142682088888C0075B05E /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6142632088888C0075B05E /* WYWebProgressLayer.m */; };
+		1A6142742089C3BD0075B05E /* WithdrawalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6142732089C3BD0075B05E /* WithdrawalViewController.m */; };
 		1ABFCAC12085B2BD00651C15 /* TeamObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFCAC02085B2BD00651C15 /* TeamObject.m */; };
 		1ABFCAC5208604E800651C15 /* CenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFCAC3208604E800651C15 /* CenterTableViewCell.m */; };
 		1ABFCAC6208604E800651C15 /* CenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ABFCAC4208604E800651C15 /* CenterTableViewCell.xib */; };
@@ -97,6 +98,13 @@
 		1A6142612088888C0075B05E /* WLWebProgressLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWebProgressLayer.h; sourceTree = "<group>"; };
 		1A6142622088888C0075B05E /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		1A6142632088888C0075B05E /* WYWebProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWebProgressLayer.m; sourceTree = "<group>"; };
+		1A6142692089AAFF0075B05E /* dome.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dome.entitlements; sourceTree = "<group>"; };
+		1A61426A2089BD5C0075B05E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		1A61426C2089BD640075B05E /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
+		1A61426E2089BD6E0075B05E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1A6142702089BD9A0075B05E /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		1A6142722089C3BD0075B05E /* WithdrawalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawalViewController.h; sourceTree = "<group>"; };
+		1A6142732089C3BD0075B05E /* WithdrawalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawalViewController.m; sourceTree = "<group>"; };
 		1ABFCABF2085B2BD00651C15 /* TeamObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamObject.h; sourceTree = "<group>"; };
 		1ABFCAC02085B2BD00651C15 /* TeamObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamObject.m; sourceTree = "<group>"; };
 		1ABFCAC2208604E800651C15 /* CenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CenterTableViewCell.h; sourceTree = "<group>"; };
@@ -195,6 +203,7 @@
 		1A5430B5207DF74F00A06513 /* dome */ = {
 			isa = PBXGroup;
 			children = (
+				1A6142692089AAFF0075B05E /* dome.entitlements */,
 				1AD3F1EF20844B080095DBD1 /* M */,
 				1AD3F1EE20844B040095DBD1 /* V */,
 				1AD3F1ED20844B010095DBD1 /* C */,
@@ -253,6 +262,15 @@
 				1A6142632088888C0075B05E /* WYWebProgressLayer.m */,
 			);
 			path = "Web加载进度";
+			sourceTree = "<group>";
+		};
+		1A6142752089C3C40075B05E /* 提现 */ = {
+			isa = PBXGroup;
+			children = (
+				1A6142722089C3BD0075B05E /* WithdrawalViewController.h */,
+				1A6142732089C3BD0075B05E /* WithdrawalViewController.m */,
+			);
+			path = "提现";
 			sourceTree = "<group>";
 		};
 		1AD3F1ED20844B010095DBD1 /* C */ = {
@@ -359,6 +377,7 @@
 			children = (
 				1AD3F20320844BE30095DBD1 /* CenterViewController.m */,
 				1AD3F20420844BE30095DBD1 /* CenterViewController.h */,
+				1A6142752089C3C40075B05E /* 提现 */,
 			);
 			path = "个人中心";
 			sourceTree = "<group>";
@@ -398,6 +417,10 @@
 		3681748543DAFDB9B8613D78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A6142702089BD9A0075B05E /* libz.1.2.5.tbd */,
+				1A61426E2089BD6E0075B05E /* SystemConfiguration.framework */,
+				1A61426C2089BD640075B05E /* PassKit.framework */,
+				1A61426A2089BD5C0075B05E /* CFNetwork.framework */,
 				D84D47E631A992AA8E82A1BF /* Pods_dome.framework */,
 			);
 			name = Frameworks;
@@ -482,6 +505,11 @@
 				TargetAttributes = {
 					1A5430B2207DF74F00A06513 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 1;
+							};
+						};
 					};
 					1A5430CA207DF75100A06513 = {
 						CreatedOnToolsVersion = 9.3;
@@ -649,6 +677,7 @@
 				1AD3F2192084538A0095DBD1 /* LXSegmentTitleView.m in Sources */,
 				1AD3F20520844BE30095DBD1 /* CenterViewController.m in Sources */,
 				1A6142682088888C0075B05E /* WYWebProgressLayer.m in Sources */,
+				1A6142742089C3BD0075B05E /* WithdrawalViewController.m in Sources */,
 				1AD3F1FD20844BCD0095DBD1 /* LoginViewController.m in Sources */,
 				1A5430B8207DF75000A06513 /* AppDelegate.m in Sources */,
 				1A4DE9A0207E060E007D3BF3 /* NewViewController.m in Sources */,
@@ -823,13 +852,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = dome/dome.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = dome/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -863,13 +893,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = dome/dome.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FN6FWL2FZJ;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = dome/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

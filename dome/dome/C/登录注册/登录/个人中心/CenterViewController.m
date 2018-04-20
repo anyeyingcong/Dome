@@ -8,6 +8,7 @@
 
 #import "CenterViewController.h"
 #import "CenterTableViewCell.h"
+#import "WithdrawalViewController.h"
 
 @interface CenterViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) MBProgressHUD *hub;
@@ -330,6 +331,13 @@ static NSString *CenterCell = @"CenterCell";
     // 1 松开手选中颜色消失
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];//选中变一下色
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            WithdrawalViewController *vc = [[WithdrawalViewController alloc]init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
     
 }
 -(void)setNAV{

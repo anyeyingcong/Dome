@@ -83,7 +83,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];// 导航栏左右按钮字体颜色
 }
 -(void)creatTitleView{
-    self.titleView = [[LXSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    self.titleView = [[LXSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
     //    self.titleView.backgroundColor = [UIColor redColor];
     self.titleView.itemMinMargin = 10.f;
     self.titleView.titleNormalColor = [UIColor colorWithRed:78/255.f green:75/255.f blue:74/255.f alpha:1.0f];
@@ -94,7 +94,7 @@
 }
 -(void)creatTableViewControllers{
     self.contentView = [[LXScrollContentView alloc] init];
-    self.contentView.frame = CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height - 44);
+    self.contentView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64);
     self.contentView.delegate = self;
     [self.view addSubview:self.contentView];
 }

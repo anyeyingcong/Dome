@@ -243,7 +243,7 @@ static NSString *AdvertisingCell = @"AdvertisingCell";
         // 主线程执行：
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:0.1 animations:^{
-                self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49);
+                self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49-34);
             }];
             [self.tableView reloadData];
             self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
@@ -256,7 +256,7 @@ static NSString *AdvertisingCell = @"AdvertisingCell";
         // 主线程执行：
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:0.1 animations:^{
-                self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49-44);
+                self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49-34);
             }];
             [self.tableView reloadData];
             self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
@@ -301,7 +301,7 @@ static NSString *AdvertisingCell = @"AdvertisingCell";
 }
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49-44);
+    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49-34);
 }
 #pragma mark 设置表的分组数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
