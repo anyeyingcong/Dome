@@ -24,6 +24,8 @@
 		1A6142672088888C0075B05E /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6142602088888C0075B05E /* NSTimer+addition.m */; };
 		1A6142682088888C0075B05E /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6142632088888C0075B05E /* WYWebProgressLayer.m */; };
 		1A6142742089C3BD0075B05E /* WithdrawalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6142732089C3BD0075B05E /* WithdrawalViewController.m */; };
+		1A7A4B45208B316B00AB619F /* TheMaskLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A4B44208B316B00AB619F /* TheMaskLayerView.m */; };
+		1A7A4B49208B449400AB619F /* ExtensionTeamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A4B48208B449400AB619F /* ExtensionTeamVC.m */; };
 		1ABFCAC12085B2BD00651C15 /* TeamObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFCAC02085B2BD00651C15 /* TeamObject.m */; };
 		1ABFCAC5208604E800651C15 /* CenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFCAC3208604E800651C15 /* CenterTableViewCell.m */; };
 		1ABFCAC6208604E800651C15 /* CenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ABFCAC4208604E800651C15 /* CenterTableViewCell.xib */; };
@@ -105,6 +107,10 @@
 		1A6142702089BD9A0075B05E /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		1A6142722089C3BD0075B05E /* WithdrawalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawalViewController.h; sourceTree = "<group>"; };
 		1A6142732089C3BD0075B05E /* WithdrawalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawalViewController.m; sourceTree = "<group>"; };
+		1A7A4B43208B316B00AB619F /* TheMaskLayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TheMaskLayerView.h; sourceTree = "<group>"; };
+		1A7A4B44208B316B00AB619F /* TheMaskLayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheMaskLayerView.m; sourceTree = "<group>"; };
+		1A7A4B47208B449400AB619F /* ExtensionTeamVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionTeamVC.h; sourceTree = "<group>"; };
+		1A7A4B48208B449400AB619F /* ExtensionTeamVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionTeamVC.m; sourceTree = "<group>"; };
 		1ABFCABF2085B2BD00651C15 /* TeamObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamObject.h; sourceTree = "<group>"; };
 		1ABFCAC02085B2BD00651C15 /* TeamObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamObject.m; sourceTree = "<group>"; };
 		1ABFCAC2208604E800651C15 /* CenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CenterTableViewCell.h; sourceTree = "<group>"; };
@@ -273,9 +279,28 @@
 			path = "提现";
 			sourceTree = "<group>";
 		};
+		1A7A4B3F208B23F400AB619F /* 遮罩层 */ = {
+			isa = PBXGroup;
+			children = (
+				1A7A4B43208B316B00AB619F /* TheMaskLayerView.h */,
+				1A7A4B44208B316B00AB619F /* TheMaskLayerView.m */,
+			);
+			path = "遮罩层";
+			sourceTree = "<group>";
+		};
+		1A7A4B46208B447600AB619F /* 扩展团队 */ = {
+			isa = PBXGroup;
+			children = (
+				1A7A4B47208B449400AB619F /* ExtensionTeamVC.h */,
+				1A7A4B48208B449400AB619F /* ExtensionTeamVC.m */,
+			);
+			path = "扩展团队";
+			sourceTree = "<group>";
+		};
 		1AD3F1ED20844B010095DBD1 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				1A7A4B3F208B23F400AB619F /* 遮罩层 */,
 				1AD3F1F220844B390095DBD1 /* 入口类 */,
 				1AD3F1F120844B360095DBD1 /* 引导页 */,
 				1AD3F1F020844B320095DBD1 /* 登录注册 */,
@@ -348,7 +373,7 @@
 				1AD3F1FC20844BCD0095DBD1 /* LoginViewController.m */,
 				1AD3F1FE20844BD90095DBD1 /* Tabbar */,
 				1AD3F20A20844BEC0095DBD1 /* 主页 */,
-				1AD3F20620844BE70095DBD1 /* 扩展团队 */,
+				1AD3F20620844BE70095DBD1 /* 我的团队 */,
 				1AD3F20220844BE30095DBD1 /* 个人中心 */,
 			);
 			path = "登录";
@@ -382,13 +407,14 @@
 			path = "个人中心";
 			sourceTree = "<group>";
 		};
-		1AD3F20620844BE70095DBD1 /* 扩展团队 */ = {
+		1AD3F20620844BE70095DBD1 /* 我的团队 */ = {
 			isa = PBXGroup;
 			children = (
 				1AD3F20720844BE70095DBD1 /* TeamViewController.m */,
 				1AD3F20820844BE70095DBD1 /* TeamViewController.h */,
+				1A7A4B46208B447600AB619F /* 扩展团队 */,
 			);
-			path = "扩展团队";
+			path = "我的团队";
 			sourceTree = "<group>";
 		};
 		1AD3F20A20844BEC0095DBD1 /* 主页 */ = {
@@ -656,6 +682,7 @@
 				1AD3F20D20844BEC0095DBD1 /* MainViewController.m in Sources */,
 				1AD3F24020848AA70095DBD1 /* AdvertisingTableViewCell.m in Sources */,
 				1AD3F237208484D40095DBD1 /* TableViewObject.m in Sources */,
+				1A7A4B49208B449400AB619F /* ExtensionTeamVC.m in Sources */,
 				1A5430BB207DF75000A06513 /* ViewController.m in Sources */,
 				1AD3F1FA20844BBE0095DBD1 /* RegisterViewController.m in Sources */,
 				1A614257208878B00075B05E /* MainWKWebView.m in Sources */,
@@ -668,6 +695,7 @@
 				1AD3F21D208454DE0095DBD1 /* TableViewViewController.m in Sources */,
 				1AD3F213208451720095DBD1 /* SQLObject.m in Sources */,
 				1A6142672088888C0075B05E /* NSTimer+addition.m in Sources */,
+				1A7A4B45208B316B00AB619F /* TheMaskLayerView.m in Sources */,
 				1A345B342086EA4600353074 /* CenterObject.m in Sources */,
 				1ABFCAC5208604E800651C15 /* CenterTableViewCell.m in Sources */,
 				1AD3F23B208486EF0095DBD1 /* ListTableViewCell.m in Sources */,

@@ -45,8 +45,13 @@ static NSString *CenterCell = @"CenterCell";
             [self.tableView.mj_header beginRefreshing];
         }
     });
+    
+    [self creatMLvc];
 }
-
+-(void)creatMLvc{
+    TheMaskLayerView *mlView = [[TheMaskLayerView alloc]init];
+    [self.view addSubview:mlView];
+}
 -(void)downTabView{
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block

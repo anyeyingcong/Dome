@@ -38,7 +38,7 @@
     
     TeamViewController *teamVC = [[TeamViewController alloc]init];
     teamVC.tabBarItem = [[UITabBarItem alloc] init];
-    teamVC.tabBarItem.title = @"扩建团队";
+    teamVC.tabBarItem.title = @"我的团队";
     teamVC.tabBarItem.image = [[UIImage imageNamed:@"navigation_second_default"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     teamVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"navigation_second_checked"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
     [teamVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:123/255.f green:197/255.f blue:188/255.f alpha:1],NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];//选中

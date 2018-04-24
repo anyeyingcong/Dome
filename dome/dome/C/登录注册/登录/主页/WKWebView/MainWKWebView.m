@@ -106,7 +106,7 @@
 -(void)dataRequst{
     
 //    NSLog(@" ===\n %@",[NSString stringWithFormat:@"WKWebView%@",self.tid]);
-    [NetworkObject getNetworkRequestWithUrlString:[NSString stringWithFormat:@"%@article/index?fuid=62&aid=%@&showAct=in&sendType=api&token=887f2f0d3db09ced4dadec55810e1028",IP,self.tid] parameters:nil isCache:YES isUpdate:NO tableName:[NSString stringWithFormat:@"WKWebView%@",self.tid] succeed:^(id data) {
+    [NetworkObject getNetworkRequestWithUrlString:[NSString stringWithFormat:@"%@article/index?fuid=62&aid=%@&showAct=in&sendType=api&token=887f2f0d3db09ced4dadec55810e1028",IP,self.tid] parameters:nil isCache:NO isUpdate:NO tableName:[NSString stringWithFormat:@"WKWebView%@",self.tid] succeed:^(id data) {
         self.data = data;
         [self dataUpdate];
     } fail:^(NSError *error) {

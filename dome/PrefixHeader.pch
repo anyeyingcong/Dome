@@ -23,7 +23,7 @@
 #import "UIImageView+WebCache.h"
 //#import <WebKit/WebKit.h>
 #import "JWCacheURLProtocol.h"
-
+#import "TheMaskLayerView.h"
 
 
 //appdelegate的实例对象

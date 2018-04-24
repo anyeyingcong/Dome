@@ -48,9 +48,30 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     [self setNAV];
-    [self pay];
+    [self dataRequst];
+//    [self pay];
 }
+-(void)dataRequst{
+    NSMutableDictionary *mDic = [[NSMutableDictionary alloc]init];
+    [mDic removeAllObjects];//先移除字典所有的元素，再重新添加
+    [mDic setObject:@"62" forKey:@"Uid"];
+    [mDic setObject:@"preTion" forKey:@"actType"];
+    [mDic setObject:[NetworkObject md5:@"bangbang"] forKey:@"token"];
+    
+    [NetworkObject postNetworkRequestWithUrlString:[NSString stringWithFormat:@"%@user/index",IP] parameters:mDic isCache:YES isUpdate:NO tableName:@"html" succeed:^(id data) {
+        
+        NSLog(@" ===\n %@",[data valueForKey:@"errorMessage"]);
+//        <p style="line-height: 1.8;font-size:30px;">
+//        <span style="color: #aaa9a9;">1.每天提现额度不可超过100元。<br>
+//        </span><span style="color: #aaa9a9;">2.提现成功后，将在1-5个工作日到账。<br>
+//        </span><span style="color: #aaa9a9;">3.若遇到任何问题，请联系微信 WBSJ0518 YouDuKF</span>
+//        </p>
+        
+    } fail:^(NSError *error) {
+        
+    }];
 
+}
 -(void)setNAV{
     self.title = @"提现";
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];// 导航栏左右按钮字体颜色

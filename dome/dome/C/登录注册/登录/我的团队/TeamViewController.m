@@ -8,25 +8,27 @@
 
 #import "TeamViewController.h"
 #import "TeamObject.h"
+#import "CenterTableViewCell.h"//和个人中心cell重用
+#import "ExtensionTeamVC.h"
 @interface TeamViewController ()<UITableViewDelegate, UITableViewDataSource>
 //
 @property (nonatomic) NSMutableArray *titleArr;//标题数组
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSMutableArray *mtMarr;//数据模型数组
 
-@property (nonatomic) int *listNumber;
+@property (nonatomic) int listNumber;//好友列表的好友数
 
 
 @property (nonatomic) id data;
+
+@property (nonatomic) BOOL yesOrNo;//是否闭合展示好友列表
 
 @end
 
 @implementation TeamViewController
 -(void)viewWillAppear:(BOOL)animated{
-    
     [super viewWillAppear:animated];
     self.edgesForExtendedLayout = UIRectEdgeNone;//从nav底部开始
-    
     
 }
 - (void)viewDidLoad {
@@ -156,7 +158,7 @@
     
 
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    self.tableView.backgroundColor = [UIColor greenColor];
+//    self.tableView.backgroundColor = [UIColor greenColor];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];//没有数据不显示分割线
@@ -189,17 +191,21 @@
 }
 #pragma mark 设置区头高度
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (self.listNumber >0 ) {
-        return 44;
-    }else
-        return 0;
+//    if (self.listNumber >0 ) {
+//        return 44;
+//    }else
+//        return 0;
+    return 44;
+
 }
 #pragma mark 设置区尾高度
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (self.listNumber >0 ) {
-        return 44;
-    }else
-        return 0;
+//    if (self.listNumber >0 ) {
+//        return 44;
+//    }else
+//        return 0;
+    return 44;
+
 }
 #pragma mark 设置区头View
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -238,15 +244,24 @@
     return footerView;
 }
 -(void)butClick:(UIButton *)but{
+#pragma mark --------------------------------我的团队
     switch (but.tag) {
         case 10:
             {
-                
+                if (self.yesOrNo == NO) {
+                    self.listNumber = 0;
+                    self.yesOrNo = YES;
+                }else{
+                    self.listNumber = (int)self.mtMarr.count;
+                    self.yesOrNo = NO;
+                }
+                [self.tableView reloadData];
             }
             break;
+            #pragma mark --------------------------------扩建团队
         case 11:
         {
-            
+            [self goExtensionTeamVC];
         }
             break;
         default:
@@ -255,15 +270,18 @@
 }
 #pragma mark 设置tableViewCell视图
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [[UITableViewCell alloc]init];
-    //    cell.selectionStyle = UITableViewCellSelectionStyleNone;//点击cell没有变化
-    [cell setSeparatorInset:UIEdgeInsetsMake(0, 20, 0, 20)];//左右分割线的位置
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;//右箭头
-    cell.backgroundColor = [UIColor clearColor];//关键语句
     
-    cell.textLabel.text = self.titleArr[indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:@"BG"];
+    static NSString *identifer=@"CenterTableViewCell";
     
+    CenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    
+    if (cell == nil){
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"CenterTableViewCell" owner:self options:nil] lastObject];
+    }
+    TeamObject *obj = self.mtMarr[indexPath.row];
+    [cell.headPortraitImgView sd_setImageWithURL:[NSURL URLWithString: obj.headimg] placeholderImage:[UIImage imageNamed:@"personal_center_sign_head_portrait"]];//设置用户头像
+    cell.nameLab.text = obj.uname;
+    cell.InviteCodeLab.text = [NSString stringWithFormat:@"赚取%@金币",obj.upper_level];
     return cell;
 }
 #pragma mark 设置表cell点击事件
@@ -273,8 +291,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];//选中变一下色
     
 }
+#pragma mark --------------------------------设置导航栏
 -(void)setNAV{
-    self.title = @"扩展团队";
+    self.title = @"我的团队";
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:17],NSForegroundColorAttributeName:[UIColor whiteColor]}];//导航栏标题字体颜色
@@ -288,7 +307,12 @@
 #pragma mark 扩展团队按钮
 
 -(void)rightBarButtonClick{
-    
+    [self goExtensionTeamVC];
+}
+#pragma mark --------------------------------去扩展团队页面
+-(void)goExtensionTeamVC{
+    ExtensionTeamVC *vc = [[ExtensionTeamVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

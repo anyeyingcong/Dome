@@ -19,10 +19,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [self isTtTheFirstRun];////判断APP是否第一次登录
+    #pragma mark --------------------------------判断APP是否第一次登录
+    [self isTtTheFirstRun];
     
+    #pragma mark --------------------------------网页缓存
     [NSURLProtocol registerClass:[JWCacheURLProtocol class]];
     
+    #pragma mark --------------------------------获取手机型号
+
     return YES;
 }
 

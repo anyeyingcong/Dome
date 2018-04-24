@@ -47,7 +47,7 @@ static NSString *AdvertisingCell = @"AdvertisingCell";
     
 //    NSLog(@" ===\n %@",self.carId);
 
-    [self performSelector:@selector(way) withObject:nil afterDelay:0.01f];
+    [self performSelector:@selector(way) withObject:nil afterDelay:0.001f];
 }
 -(void)way{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -242,8 +242,15 @@ static NSString *AdvertisingCell = @"AdvertisingCell";
         }
         // 主线程执行：
         dispatch_async(dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:0.1 animations:^{
-                self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49-34);
+            [UIView animateWithDuration:0.32 animations:^{
+//                if ([[NetworkObject iphoneType] isEqualToString:@"iPhone X"]) {
+//                    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49-34);
+//                }else{
+//
+//                    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49);
+//
+//                }
+                self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64);
             }];
             [self.tableView reloadData];
             self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
@@ -255,8 +262,15 @@ static NSString *AdvertisingCell = @"AdvertisingCell";
         self.pageNumber -= 1;
         // 主线程执行：
         dispatch_async(dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:0.1 animations:^{
-                self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49-34);
+            [UIView animateWithDuration:0.32 animations:^{
+//                if ([kAppdelegate.phoneModel isEqualToString:@"iPhone X"]) {
+//                    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49-34);
+//                }else{
+//
+//                    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49);
+//
+//                }
+                self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49);
             }];
             [self.tableView reloadData];
             self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
@@ -300,8 +314,17 @@ static NSString *AdvertisingCell = @"AdvertisingCell";
     
 }
 - (void)viewWillLayoutSubviews{
+    
     [super viewWillLayoutSubviews];
-    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49-34);
+//
+//    if ([kAppdelegate.phoneModel isEqualToString:@"iPhone X"]) {
+//        self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49-34);
+//    }else{
+//
+//        self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49);
+//
+//    }
+    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64);
 }
 #pragma mark 设置表的分组数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

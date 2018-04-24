@@ -29,4 +29,7 @@
 
 
 +(NSString *) md5: (NSString *) inPutText;
+
++ (NSString*)iphoneType;
+
 @end
